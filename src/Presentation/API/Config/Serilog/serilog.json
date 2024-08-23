@@ -1,0 +1,24 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.Graylog" ],
+    "MinimumLevel": "Information",
+    "Enrich": [ "FromLogContext", "WithProperty" ],
+    "Properties": {
+      "Application": "App"
+    },
+    "WriteTo": [
+      {
+        "Name": "Graylog",
+        "Args": {
+          "HostnameOrAddress": "c_graylog",
+          "Port": 12201,
+          "TransportType": "Udp",
+          "Facility": "app-service"
+        }
+      },
+      {
+        "Name": "Console"
+      }
+    ]
+  }
+}
